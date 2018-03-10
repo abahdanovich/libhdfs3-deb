@@ -15,11 +15,11 @@ fi
 
 workdir=$(mktemp -d)
 cd $workdir
-wget -q https://repo.continuum.io/miniconda/Miniconda3-4.3.27.1-Linux-x86_64.sh
-echo '640f505f06f87d75bebc629e4a677ebb185ea9a34eb6d7c199db0753ffc42f62  Miniconda3-4.3.27.1-Linux-x86_64.sh' | sha256sum -c - || exit 1
+wget -q https://repo.continuum.io/miniconda/Miniconda3-4.4.10-Linux-x86_64.sh
+echo '0c2e9b992b2edd87eddf954a96e5feae86dd66d69b1f6706a99bd7fa75e7a891  Miniconda3-4.4.10-Linux-x86_64.sh' | sha256sum -c - || exit 1
 
-bash Miniconda3-4.3.27.1-Linux-x86_64.sh -b -p ./miniconda -u
-./miniconda/bin/conda install -q -y -c conda-forge libhdfs3
+bash Miniconda3-4.4.10-Linux-x86_64.sh -b -p ./miniconda -u
+./miniconda/bin/conda install -y -c conda-forge libhdfs3
 mkdir -p libhdfs3_1-1/usr/lib/x86_64-linux-gnu/
 rsync -l ./miniconda/lib/libprotobuf.so.* ./libhdfs3_1-1/usr/lib/x86_64-linux-gnu/
 rsync -l ./miniconda/lib/libhdfs3.so* ./libhdfs3_1-1/usr/lib/x86_64-linux-gnu/
